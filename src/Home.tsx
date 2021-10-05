@@ -3,6 +3,8 @@ import styled from "styled-components";
 import Countdown from "react-countdown";
 import { Button, CircularProgress, Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
+import sol_terminal from './sol_terminal.jpeg';
+import CSS from 'csstype';
 
 import * as anchor from "@project-serum/anchor";
 
@@ -22,6 +24,31 @@ import {
 const ConnectButton = styled(WalletDialogButton)``;
 
 const CounterText = styled.span``; // add your styles here
+
+const WalletDetails = styled.div`
+      color: white;
+      text-align: right;
+      margin-top: 20px;
+      margin-right: 40px;
+      padding: 5px;
+    `;
+
+const SolImage = styled.div`
+    display: flex;
+    justify-content: center;
+  `;
+
+const PageBody = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  `;
+
+var imageStyle = {
+  width: "50%",
+  height: "50%",
+};
 
 const MintContainer = styled.div``; // add your styles here
 
@@ -160,46 +187,82 @@ const Home = (props: HomeProps) => {
 
   return (
     <main>
-      {wallet && (
-        <p>Wallet {shortenAddress(wallet.publicKey.toBase58() || "")}</p>
-      )}
+      <WalletDetails>
+        {wallet && (
+          <p>Wallet {shortenAddress(wallet.publicKey.toBase58() || "")}</p>
+        )}
 
-      {wallet && <p>Balance: {(balance || 0).toLocaleString()} SOL</p>}
+        {wallet && <p>Balance: {(balance || 0).toLocaleString()} SOL</p>}
 
-      {wallet && <p>Total Available: {itemsAvailable}</p>}
+        {wallet && <p>Total Available: {itemsAvailable}</p>}
 
-      {wallet && <p>Redeemed: {itemsRedeemed}</p>}
+        {wallet && <p>Redeemed: {itemsRedeemed}</p>}
 
-      {wallet && <p>Remaining: {itemsRemaining}</p>}
+        {wallet && <p>Remaining: {itemsRemaining}</p>}
+      </WalletDetails>
 
       <MintContainer>
         {!wallet ? (
           <ConnectButton>Connect Wallet</ConnectButton>
         ) : (
-          <MintButton
-            disabled={isSoldOut || isMinting || !isActive}
-            onClick={onMint}
-            variant="contained"
-          >
-            {isSoldOut ? (
-              "SOLD OUT"
-            ) : isActive ? (
-              isMinting ? (
-                <CircularProgress />
+            <MintButton
+              disabled={isSoldOut || isMinting || !isActive}
+              //disabled={isMinting || !isActive}
+              //{isSoldOut ? }
+              onClick={onMint}
+              variant="contained"
+            >
+              {isSoldOut ? (
+                "SOLD OUT"
+              ) : isActive ? (
+                isMinting ? (
+                  <CircularProgress />
+                ) : (
+                    "MINT"
+                  )
               ) : (
-                "MINT"
-              )
-            ) : (
-              <Countdown
-                date={startDate}
-                onMount={({ completed }) => completed && setIsActive(true)}
-                onComplete={() => setIsActive(true)}
-                renderer={renderCounter}
-              />
-            )}
-          </MintButton>
-        )}
+                    <Countdown
+                      date={startDate}
+                      onMount={({ completed }) => completed && setIsActive(true)}
+                      onComplete={() => setIsActive(true)}
+                      renderer={renderCounter}
+                    />
+                  )}
+            </MintButton>
+          )}
       </MintContainer>
+
+      <div>
+        <img src={sol_terminal} style={{width:"30%",
+        height:"30%",
+        aspectRatio: '1',
+        backgroundColor:'black'}}/>
+      </div>
+
+      <div style={{padding: "20px"}}>
+        <p style={{
+      color: "greenyellow",
+      fontFamily: "monospace",
+      fontSize: '24px',
+      textAlign: "center",
+      display: 'inline-block',
+      position: 'relative'}}> Realspace,[1] also called normal space,[2] space-normal to the Chiss, <br></br>
+      [3] or simply space,[4] was the dimension in which all of the galaxy's residents lived. The vast <br></br>
+       majority of space was a vacuum, a depressurized area devoid of atmosphere. The vacuum of space <br></br>
+       was fatal to many living organisms without the use of some sort of EVA suit and was unable to <br></br>
+       sustain fire.[5] Because travel using sublight engines within realspace was slow, sentients <br></br>
+       found a technological way to access the shadow dimension known as hyperspace. A starship <br></br>
+       equipped with a hyperdrive would "jump" from realspace into hyperspace, and "revert" from hyperspace<br></br>
+      to realspace.[1] Species that could survive in the vacuum of space include exogorths[6] and<br></br>
+      Cylo's cyborg whale-ships.[7] Neebrays could survive in nebulae, such as the Kaliida Nebula.[8]<br></br>
+      As well as being able to survive in space, the purrgil were capable of traveling through<br></br>
+       hyperspace.[9] Many droids were able to operate in space. Astromech droids were exposed<br></br>
+     to the vacuum of space when conducting repairs outside the hull of a starship[10] and when<br></br>
+      inserted into the astromech socket of a starfighter.[11] KX-series security droids could<br></br>
+      also survive in the vacuum of space.[12] Battle droids, used by the Confederacy of <br></br>
+      Independent Systems during the Clone Wars, occasionally sat on the outside of ships, <br></br>
+      such as pod-hunting shuttles.[13] </p>
+      </div>
 
       <Snackbar
         open={alertState.open}

@@ -1838,10 +1838,10 @@
     buffer-layout "^1.2.0"
     dotenv "10.0.0"
 
-"@solana/wallet-adapter-base@^0.5.2":
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/@solana/wallet-adapter-base/-/wallet-adapter-base-0.5.2.tgz#2a59f9978f83360da50f818a5c9f4740697fd334"
-  integrity sha512-h3PwBSoK/ASqOoXCOg1YJAmR+E/I/YYobawOqLC6ACdtUKS9NsDKoaXkrkYHyDD9m5N59iHCyc8GlUEtJaaS+w==
+"@solana/wallet-adapter-base@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@solana/wallet-adapter-base/-/wallet-adapter-base-0.6.0.tgz#5a300dcf3021b4d7b8fe965020c2e282a7f27afd"
+  integrity sha512-c32iJ3rSEPR7XIo1ijd/LgiUtMXRXgJHcYveekOb69JmbZwoF6gqeC5kHt8IwvGMuXofb19Mg+iquaqVTuWUlg==
   dependencies:
     eventemitter3 "^4.0.7"
 
@@ -1890,6 +1890,11 @@
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/@solana/wallet-adapter-phantom/-/wallet-adapter-phantom-0.5.3.tgz#193cd7cf03ab131dd15497468dac8e483dec5285"
   integrity sha512-DQLBTdu10oXu9HFtzI0CXPPeqUnLEh+UQpgZyAhF6ZqHDofUmwGpLvGcuGXrRbYPEkGpd8tjA4eHNtejncUhvA==
+
+"@solana/wallet-adapter-react-ui@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@solana/wallet-adapter-react-ui/-/wallet-adapter-react-ui-0.5.0.tgz#f8ab364983fc2d4983f3a21ed04ad6b546c25a66"
+  integrity sha512-Bn2myZMoPqx/XlR0pojMcc5c9yXHOfCLfr0UH6H4Z8mCkPm7iKiewsR/6DLPrb4JiwJPWtYCPuMWqgyyNE5pPQ==
 
 "@solana/wallet-adapter-react@^0.11.0":
   version "0.11.0"

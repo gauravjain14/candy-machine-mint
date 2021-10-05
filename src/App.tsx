@@ -1,4 +1,5 @@
 import "./App.css";
+import logo from './logo.svg';
 import { useMemo } from "react";
 
 import Home from "./Home";
@@ -83,6 +84,36 @@ const App = () => {
   );
 
   return (
+    <div className="Top">
+      <div className="App">
+        <div className="Header-parent">
+          <header className="App-header">
+            Welcome to The Terminal
+          </header>
+          <div className="Wallet-Button">
+            <ThemeProvider theme={theme}>
+              <ConnectionProvider endpoint={endpoint}>
+                <WalletProvider wallets={wallets} autoConnect={true}>
+                  <WalletDialogProvider>
+                    <Home
+                      candyMachineId={candyMachineId}
+                      config={config}
+                      connection={connection}
+                      startDate={startDateSeed}
+                      treasury={treasury}
+                      txTimeout={txTimeout}
+                    />
+                  </WalletDialogProvider>
+                </WalletProvider>
+              </ConnectionProvider>
+            </ThemeProvider>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  /*return (
       <ThemeProvider theme={theme}>
         <ConnectionProvider endpoint={endpoint}>
           <WalletProvider wallets={wallets} autoConnect={true}>
@@ -99,7 +130,7 @@ const App = () => {
           </WalletProvider>
         </ConnectionProvider>
       </ThemeProvider>
-  );
+  );*/
 };
 
 export default App;
